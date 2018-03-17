@@ -118,6 +118,28 @@ tr td {
   }
 }
 
+@media (min-height: 600px){
+  .column {
+    min-height: 350px !important;
+  }
+
+  tr td {
+    font-family: Arial;
+    font-size: 15px;
+  }
+}
+
+@media (min-height: 720px){
+  .column {
+    min-height: 400px !important;
+  }
+
+  tr td {
+    font-family: Arial;
+    font-size: 20px;
+  }
+}
+
 @media (min-height: 950px){
   .column {
     min-height: 600px !important;
