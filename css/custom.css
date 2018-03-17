@@ -129,7 +129,7 @@ tr td {
   }
 }
 
-@media (min-height: 720px){
+@media (max-height: 720px){
   .column {
     min-height: 400px !important;
   }
