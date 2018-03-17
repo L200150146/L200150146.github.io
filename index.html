@@ -15,8 +15,33 @@
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 		<!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
 		<script src="js/modernizr.custom.25376.js"></script>
+		<style type="text/css">
+			@media (min-width: 1366px){
+				img{
+					width: 30% !important;
+				}
+			}
+
+			@media (min-width: 1900px){
+				img{
+					width: 50% !important;
+				}
+			}
+
+			@media (min-width: 1440px){
+				img{
+					width: 45% !important;
+				}
+			}
+
+			@media (max-width: 1280px){
+				img{
+					width: 25% !important;
+				}
+			}
+		</style>
 	</head>
-	<body>
+	<body style="overflow: hidden">
 		<div id="perspective" class="perspective effect-rotateleft">
 			<div class="container">
 				<div class="wrapper"><!-- wrapper needed for scroll -->
@@ -25,7 +50,7 @@
 						<h1>Geographic Information System<span>Fakhrur Razi - L200150146</span></h1>	
 					</header>
 					<div class="main clearfix">
-						<center><img src="gis.jpg" width="50%"></center>
+						<center><img src="gis.jpg"></center>
 						<div class="related">
 							<p><button id="showMenu">Show Menu</button></p>
 						</div>
