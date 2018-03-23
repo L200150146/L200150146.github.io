@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>First Task - Pin at Home</title>
+    <meta name="description" content="Perspective Page View Navigation: Transforms the page in 3D to reveal a menu" />
+    <meta name="keywords" content="3d page, menu, navigation, mobile, perspective, css transform, web development, web design" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
+    <script src="js/modernizr.custom.25376.js"></script>
+  </head>
+  <body>
+    <div id="perspective" class="perspective effect-airbnb">
+      <div class="container">
+        <div class="wrapper"><!-- wrapper needed for scroll -->
+          <div class="main clearfix">
+            <div class="column">
+              <div id="map" style="width: 100%; height:100%; position: absolute;"></div>              
+            </div>
+            <script>
+                    var map;
+                    function initMap() {
+                      map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 3,
+                        center: {lat:-7.578134, lng: 111.307907}
+                      });
+
+                        // Create an array of alphabetical characters used to label the markers.
+                        var titles = ['Multazam Hotel Solo', 'Assalam Syariah Hotel Solo', 'The Alana Solo', 'Alila Solo', 'The Adhiwangsa Hotel Solo', 'The Sunan Hotel', 'Swiss-Belinn Saripetojo', 'Favehotel Adi Sucipto Solo', 'Aston Solo Hotel', 'Megaland Hotel Solo', ' De Solo Boutique Hotel', 'Solo Paragon Hotel & Residences', 'Lampion Hotel Solo', 'Novotel Solo', ' Amarelo Hotel Solo', 'Dana Hotel', 'Syariah Hotel Solo', 'Amaris Hotel Sriwedari Solo', 'Red Planet Solo', 'Grand Orchid Hotel Solo']
+                        var labels = ["MU","AS","TA","AL","TAd","TS","SB","FV","ASt","MH","DSB","SP","LH","NV","AH","DH","SH","AHS","RP","GOH"];
+                        // Add some markers to the map.
+                        // Note: The code uses the JavaScript Array.prototype.map() method to
+                        // create an array of markers based on a given "locations" array.
+                        // The map() method here has nothing to do with the Google Maps API.
+                        var markers = locations.map(function(location, i) {
+                          return new google.maps.Marker({
+                            position: location,
+                            label: labels[i % labels.length],
+                            title: titles[i % titles.length]
+                          });
+                        });
+
+                        // Add a marker clusterer to manage the markers.
+                        var markerCluster = new MarkerClusterer(map, markers,
+                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+                    }
+
+                    var locations = [
+                      {lat:-7.5550073, lng: 110.7699497},
+                      {lat:-7.554261, lng: 110.769754},
+                      {lat:-7.545223000000001, lng: 110.774466},
+                      {lat:-7.5588719, lng: 110.7862248},
+                      {lat:-7.548524, lng: 110.7879748},
+                      {lat:-7.5573971, lng: 110.7946218},
+                      {lat:-7.562463499999999, lng: 110.7947374},
+                      {lat:-7.5520727, lng: 110.7952105},
+                      {lat:-7.5636798, lng: 110.7987112},
+                      {lat:-7.5644234, lng: 110.8013902},
+                      {lat:-7.565372, lng: 110.8099817},
+                      {lat:-7.5623168, lng: 110.8098597},
+                      {lat:-7.572318499999999, lng: 110.8142507},
+                      {lat:-7.5677333, lng: 110.8172261},
+                      {lat:-7.572833999999999, lng: 110.8212366},
+                      {lat:41.89424899999999, lng: -87.62837429999999},
+                      {lat:-7.544100500000001, lng: 110.766378},
+                      {lat:-7.5699118, lng: 110.8152915},
+                      {lat:-7.563931800000001, lng: 110.8143134},
+                      {lat:-7.5670866, lng: 110.8175616}
+                    ]
+                    function ubahtipe(tipenya){
+                      if (tipenya == "ROADMAP") {
+                        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                      }else if (tipenya == "TERRAIN") {
+                        map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+                      }else if (tipenya == "HYBRID") {
+                        map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                      }else if (tipenya == "SATELLITE") {
+                        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                      }
+                    }
+                  </script>
+                  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+                  </script>
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBER1-PQ0QguvmjmV_goaJspHTCCcoVM1E&callback=initMap">
+                  </script>
+            <div class="related">
+                <input type="button" name="tombol" value="Tipe RoadMap" class="btn btn-default" id="ROADMAP" onclick="ubahtipe(this.id)">
+                      <input type="button" name="tombol" value="Tipe Satellite" class="btn btn-primary" id="SATELLITE" onclick="ubahtipe(this.id)">
+                      <input type="button" name="tombol" value="Tipe Hybrid" class="btn btn-success" id="HYBRID" onclick="ubahtipe(this.id)">
+                      <input type="button" name="tombol" value="Tipe Terrain" class="btn btn-info" id="TERRAIN" onclick="ubahtipe(this.id)">
+                          <hr width="80%">
+                          <div class="kiri">
+                            <center>
+                              <br>
+                              <h1>DAFTAR HOTEL KOTA SOLO</h1>
+                            </center>
+                          </div>
+                          <div class="kanan">
+                              <button id="showMenu"><img src="mn.jpg" width="120px"></button>
+                            <br>
+                          </div>
+            </div>
+          </div><!-- /main -->
+        </div><!-- wrapper -->
+      </div><!-- /container -->
+      <nav class="outer-nav left vertical">
+        <a href="index.html" class="icon-home">Home</a>
+        <a href="tugas1.html" class="icon-star">1st Task</a>
+        <a href="tugas2.html" class="icon-star">2nd Task</a>
+        <a href="tugas3.html" class="icon-star">3rd Task</a>
+        <a href="tugas4.html" class="icon-star">4th Task</a>
+      </nav>
+    </div><!-- /perspective -->
+    <script src="js/classie.js"></script>
+    <script src="js/menu.js"></script>
+  </body>
+</html>
