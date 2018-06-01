@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>First Task - Pin at Home</title>
+    <title>4th Task - GeoJSON NAD</title>
     <meta name="description" content="Perspective Page View Navigation: Transforms the page in 3D to reveal a menu" />
     <meta name="keywords" content="3d page, menu, navigation, mobile, perspective, css transform, web development, web design" />
     <meta name="author" content="Codrops" />
@@ -15,13 +15,49 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
     <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
     <script src="js/modernizr.custom.25376.js"></script>
+    <style type="text/css">
+      @media (min-width: 1366px) {
+        .column {
+          min-height: 600px !important;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        .kanan {
+          margin-top: -25px;
+        }
+        #showMenu > img {
+          width: 90px !important;
+        }
+
+      }
+
+      @media (min-width: 1920px) {
+        .column {
+          min-height: 750px !important;
+        }
+
+        h1 {
+          font-size: 50px;
+        }
+
+        .kanan {
+          margin-top: -10px;
+        }
+        #showMenu > img {
+          width: 120px !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="perspective" class="perspective effect-airbnb">
       <div class="container">
         <div class="wrapper"><!-- wrapper needed for scroll -->
           <div class="main clearfix">
-            <div class="column" style="min-height: 730px !important;">
+            <div class="column">
               <div id="map" style="width: 100%; height:100%; position: absolute;"></div>              
             </div>
             <script>
@@ -35,6 +71,10 @@
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                       });
 
+                      if ((screen.width<=1366) && (screen.height<=768)) {
+                        map.setZoom(7);
+                      }
+
                       map.data.loadGeoJson('aceh.geojson');
 
                       map.data.setStyle(function(feature) {
@@ -44,7 +84,7 @@
                           }
                           return /** @type {google.maps.Data.StyleOptions} */({
                             fillColor: 'black',
-                            strokeColor: 'BLUE',
+                            strokeColor: 'red',
                             strokeWeight: 2,
                           });
                       });
@@ -55,14 +95,14 @@
                         
                       map.data.addListener('mouseover', function(event) {
                         map.data.revertStyle();
-                        map.data.overrideStyle(event.feature, {fillColor: 'red', strokeColor: 'black', strokeWeight: 3});
+                        map.data.overrideStyle(event.feature, {fillColor: 'blue', strokeColor: 'black', strokeWeight: 3});
                       });
                         
                       map.data.addListener('mouseout', function(event) {
                         map.data.revertStyle();
                       });
                     }
-
+                    
                     function ubahtipe(tipenya){
                       if (tipenya == "ROADMAP") {
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
