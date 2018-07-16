@@ -36,6 +36,20 @@
                         gestureHandling: 'none',
                         zoomControl: false
                       });
+
+                      map.data.loadGeoJson('country.geojson');
+
+                      map.data.setStyle(function(feature) {
+                          var color = 'black';
+                          if (feature.getProperty('isColorful')) {
+                            color = feature.getProperty('color');
+                          }
+                          return /** @type {google.maps.Data.StyleOptions} */({
+                            fillColor: 'black',
+                            strokeColor: 'black',
+                            strokeWeight: 1,
+                          });
+                      });
                     }
 
                     function ubahtipe(tipenya){
