@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>Third Task - Visualization Earthquake Data (Circle)</title>
+    <title>5th Task - Hide Country except Indonesia</title>
     <meta name="description" content="Perspective Page View Navigation: Transforms the page in 3D to reveal a menu" />
     <meta name="keywords" content="3d page, menu, navigation, mobile, perspective, css transform, web development, web design" />
     <meta name="author" content="Codrops" />
@@ -17,7 +17,7 @@
     <script src="js/modernizr.custom.25376.js"></script>
   </head>
   <body>
-    <div id="perspective" class="perspective effect-rotatetop">
+    <div id="perspective" class="perspective effect-airbnb">
       <div class="container">
         <div class="wrapper"><!-- wrapper needed for scroll -->
           <div class="main clearfix">
@@ -27,43 +27,17 @@
             <script>
                     var map;
                     function initMap() {
+                      var Indonesia = {lat: -1.0097372, lng: 124.803229};
+
                       map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 2,
-                        center: {lat: -33.865427, lng: 151.196123},
-                        mapTypeId: 'roadmap'
-                      });
-
-                      // Create a <script> tag and set the USGS URL as the source.
-                      var script = document.createElement('script');
-
-                      // This example uses a local copy of the GeoJSON stored at
-                      // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-                      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-                      document.getElementsByTagName('head')[0].appendChild(script);
-
-                      map.data.setStyle(function(feature) {
-                        var magnitude = feature.getProperty('mag');
-                        return {
-                          icon: getCircle(magnitude)
-                        };
+                        zoom: 5,
+                        center: Indonesia,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        gestureHandling: 'none',
+                        zoomControl: false
                       });
                     }
 
-                    function getCircle(magnitude) {
-                      return {
-                        path: google.maps.SymbolPath.CIRCLE,
-                        fillColor: 'red',
-                        fillOpacity: .2,
-                        scale: Math.pow(2, magnitude) / 2,
-                        strokeColor: 'white',
-                        strokeWeight: .5
-                      };
-                    }
-
-                    function eqfeed_callback(results) {
-                      map.data.addGeoJson(results);
-                    }
-                    
                     function ubahtipe(tipenya){
                       if (tipenya == "ROADMAP") {
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
@@ -76,8 +50,6 @@
                       }
                     }
                   </script>
-                  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-                  </script>
                   <script async defer
                   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBER1-PQ0QguvmjmV_goaJspHTCCcoVM1E&callback=initMap">
                   </script>
@@ -88,10 +60,7 @@
                       <input type="button" name="tombol" value="Tipe Terrain" class="btn btn-info" id="TERRAIN" onclick="ubahtipe(this.id)">
                           <hr width="80%">
                           <div class="kiri">
-                            <center>
-                              <h1>Visualization Earthquake Data (Circle)</h1>
-                              <p>Source Data : http://earthquake.usgs.gov/</p>
-                            </center>
+                            <center><h2>Hide Country Except Indonesia</h2></center>
                           </div>
                           <div class="kanan">
                               <button id="showMenu"><img src="mn.jpg" width="120px"></button>
@@ -101,7 +70,7 @@
           </div><!-- /main -->
         </div><!-- wrapper -->
       </div><!-- /container -->
-      <nav class="outer-nav bottom horizontal">
+      <nav class="outer-nav left vertical">
         <a href="index.html" class="icon-home">Home</a>
         <a href="tugas1.html" class="icon-star">1st Task</a>
         <a href="tugas2.html" class="icon-star">2nd Task</a>

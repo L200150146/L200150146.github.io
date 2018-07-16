@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>6th Task - Custom Panorama</title>
+    <meta name="description" content="Perspective Page View Navigation: Transforms the page in 3D to reveal a menu" />
+    <meta name="keywords" content="3d page, menu, navigation, mobile, perspective, css transform, web development, web design" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
+    <script src="js/modernizr.custom.25376.js"></script>
+  </head>
+  <body>
+    <div id="perspective" class="perspective effect-rotatetop">
+      <div class="container">
+        <div class="wrapper"><!-- wrapper needed for scroll -->
+          <div class="main clearfix">
+            <div class="column">
+              <div id="map" style="width: 100%; height:100%; position: absolute;"></div>              
+            </div>
+            <script>
+                    function initPano() {
+                      var panoOptions = {
+                        pano: 'custom',
+                        visible: true,
+                        pov: {heading: 105,  pitch: 0, zoom: 0},
+                        panoProvider: getCustomPanorama
+                      };
+
+                      var panorama = new google.maps.StreetViewPanorama(
+                        document.getElementById('map'), panoOptions);
+                    }
+
+                    function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+                      return "photosphere_indonesia.jpg";
+                    }
+
+                    function getCustomPanorama(pano, zoom, tileX, tileY) {
+                      if (pano == 'custom') {
+                        return {
+                          location: {
+                            pano: 'custom',
+                            description: 'Custom Street View'
+                          },
+                          tiles: {
+                            tileSize: new google.maps.Size( 1347 , 673 ),
+                            worldSize: new google.maps.Size( 1347 , 673 ),
+                            getTileUrl: getCustomPanoramaTileUrl
+                          }
+                        };
+                      }
+                    }
+                    
+                  </script>
+                  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+                  </script>
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBER1-PQ0QguvmjmV_goaJspHTCCcoVM1E&libraries=visualization&callback=initPano">
+                  </script>
+            <div class="related" style="padding: 5% 0%">
+                          <div class="kiri">
+                            <center>
+                              <h1>Custom Street View Panorama</h1>
+                            </center>
+                          </div>
+                          <div class="kanan">
+                              <button id="showMenu"><img src="mn.jpg" width="120px"></button>
+                            <br>
+                          </div>
+            </div>
+          </div><!-- /main -->
+        </div><!-- wrapper -->
+      </div><!-- /container -->
+      <nav class="outer-nav bottom horizontal">
+        <a href="index.html" class="icon-home">Home</a>
+        <a href="tugas1.html" class="icon-star">1st Task</a>
+        <a href="tugas2.html" class="icon-star">2nd Task</a>
+        <a href="tugas3_circle.html" class="icon-star">3rd Task (Circle)</a>
+        <a href="tugas3_heatmap.html" class="icon-star">3rd Task (HeatMap)</a>
+        <a href="tugas4.html" class="icon-star">4th Task</a>
+        <a href="tugas5.html" class="icon-star">5th Task</a>
+        <a href="tugas6.html" class="icon-star">6th Task</a>
+      </nav>
+    </div><!-- /perspective -->
+    <script src="js/classie.js"></script>
+    <script src="js/menu.js"></script>
+  </body>
+</html>
